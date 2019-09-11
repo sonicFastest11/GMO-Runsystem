@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Proxy;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "Users")
@@ -28,8 +29,10 @@ public class Users implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column(name = "username")
+	@NotBlank(message="required !!!")
 	private String username;
 	@Column(name = "password")
+	@NotBlank(message="required !!!")
 	private String password;
 	@Column(name = "confirmPassword")
 	private String confirmPassword;

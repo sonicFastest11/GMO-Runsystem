@@ -22,7 +22,7 @@ public interface GenericService<T> {
 	public List<T> listEnrolmentOfAStudent(int userid);
 
 	public List<T> listAll();
-
+	public boolean checkCourse(String code);
 	public boolean checkLogin(String username, String password);
 	public boolean checkEnrolment(Users userid, Course courseid);
 	public boolean checkUser(String username);
@@ -36,6 +36,5 @@ public interface GenericService<T> {
 	public boolean updateUser(Role role, String username);
 
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id);
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,String startDate, String endDate,int id);
+			 String status, int id);
 }

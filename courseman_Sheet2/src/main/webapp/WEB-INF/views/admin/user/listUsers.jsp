@@ -63,8 +63,7 @@ p.italic {
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>Name</th>
-										<th>Pass</th>
+										<th>UserName</th>
 										<th>Role</th>
 										<th>Profile</th>
 										<th>Action</th>
@@ -76,7 +75,6 @@ p.italic {
                 						<tr>
 											<td>${user.id}</td>
 											<td>${user.username}</td>
-											<td>${user.password}</td>
 											<td>${user.roleid.role_name}</td>
 											<td>${user.profile.name}</td>
 											<td><a href="editUser?id=${user.id}">Edit</a></td>

@@ -50,7 +50,11 @@ public class CourseService implements GenericService<Course> {
 		// TODO Auto-generated method stub
 		return courseDAO.listAll();
 	}
-
+	@Override
+	public boolean checkCourse(String code) {
+		// TODO Auto-generated method stub
+		return courseDAO.checkCourse(code);
+	}
 	@Override
 	public Course getDefaultRole(Object id) {
 		// TODO Auto-generated method stub
@@ -95,7 +99,7 @@ public class CourseService implements GenericService<Course> {
 
 	@Override
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id) {
+			 String status, int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -112,16 +116,13 @@ public class CourseService implements GenericService<Course> {
 		return null;
 	}
 
-	@Override
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,String startDate, String endDate, int id) {
-		// TODO Auto-generated method stub
-		return courseDAO.updateCourse(code, name, time, fee, type, userid, startDate, endDate, id);
-	}
 
 	@Override
 	public boolean checkEnrolment(Users userid, Course courseid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }

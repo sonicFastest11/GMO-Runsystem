@@ -29,13 +29,13 @@ CREATE TABLE `course` (
   `time` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fee` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `userid` int(11) DEFAULT NULL,
-  `startDate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `endDate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `userid` int(11) NOT NULL,
+  `startDate` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `endDate` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_8tef1osvh3txlmew2pckpas03` (`userid`),
   CONSTRAINT `FK_8tef1osvh3txlmew2pckpas03` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (5,'PPL','Programing Principle','120 hours','$80','Đào tạo bên ngoài',43,'12/02/2019','12/05/2019'),(14,'SS2','Special Subject 2','150 hours','$90','Seminar',43,'12/02/2019','12/04/2019'),(17,'WBS','Web Service','120','$60','Đào tạo nội bộ',45,'12/02/2019','12/04/2019'),(18,'SEG','Software','150 hours','$100','Đào tạo nội bộ',43,'10/01/2019','10/05/2019');
+INSERT INTO `course` VALUES (5,'PPL','Programing Principle','120 hours','$80','Đào tạo bên ngoài',45,'12/02/2019','12/05/2019'),(14,'SS2','Special Subject 2','150 hours','$90','Seminar',43,'12/02/2019','12/04/2019'),(17,'WBS','Web Service','120','$60','Đào tạo nội bộ',45,'12/02/2019','12/04/2019'),(18,'SEG','Software','150 hours','$100','Đào tạo nội bộ',43,'10/01/2019','10/05/2019'),(21,'PPL2','principle2','120 hours','$60','Seminar',3,'12/02/2019','12/04/2019');
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 10:13:34
+-- Dump completed on 2019-09-11 10:10:01

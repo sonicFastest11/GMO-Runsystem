@@ -26,6 +26,7 @@ public interface GenericDAO<T> {
 	public List<T> listEnrolmentOfAStudent(int userid);
 
 	public Profile getProfile(Users user);
+	public boolean checkCourse(String code);
 
 	public boolean checkLogin(String username, String password);
 	public boolean checkEnrolment(Users userid, Course courseid);
@@ -38,6 +39,5 @@ public interface GenericDAO<T> {
 	public boolean updateUser(Role role, String username);
 
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id);
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid, String startDate, String endDate,int id);
+			String status, int id);
 }

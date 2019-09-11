@@ -5,7 +5,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<style>
+.errors {
+	color: red;
+	font-style: italic;
+}
+</style>
 <meta charset="utf-8">
 
 
@@ -55,11 +60,13 @@
 								<label>Username</label>
 								<form:input type="text" path="username" placeholder="username"
 									class="form-control" />
+									<form:errors path="username" cssClass="errors"  />
 							</div>
 							<div class="form-group">
 								<label>Password</label>
 								<form:input type="password" path="password"
 									placeholder="password" class="form-control" />
+									<form:errors path="password" cssClass="errors"  />
 							</div>
 							<div class="form-group">
 								<label>ConfirmPassword</label>

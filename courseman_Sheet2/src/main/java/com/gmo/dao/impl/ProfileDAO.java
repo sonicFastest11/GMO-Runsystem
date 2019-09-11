@@ -73,8 +73,8 @@ public class ProfileDAO implements GenericDAO<Profile> {
 
 	@Override
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id) {
-		String hql = "update Profile p set p.name =:name , p.address = :address, p.dob = :dob, p.gender = :gender, p.phone = :phone, p.email = :email, p.classCode = :classCode , p.status = :status  "
+			 String status, int id) {
+		String hql = "update Profile p set p.name =:name , p.address = :address, p.dob = :dob, p.gender = :gender, p.phone = :phone, p.email = :email,  p.status = :status  "
 				+ "where p.id =:id";
 		Session session = sessionFactory.openSession();
 		Transaction t = session.beginTransaction();
@@ -82,7 +82,7 @@ public class ProfileDAO implements GenericDAO<Profile> {
 			Query query = session.createQuery(hql);
 			query.setParameter("name", name).setParameter("address", address).setParameter("dob", dob)
 					.setParameter("gender", gender).setParameter("phone", phone).setParameter("email", email)
-					.setParameter("classCode", classCode).setParameter("status", status).setParameter("id", id);
+					.setParameter("status", status).setParameter("id", id);
 			query.executeUpdate();
 			t.commit();
 			session.close();
@@ -150,15 +150,15 @@ public class ProfileDAO implements GenericDAO<Profile> {
 		return null;
 	}
 
+
 	@Override
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,
-			String startDate, String endDate, int id) {
+	public boolean checkEnrolment(Users userid, Course courseid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean checkEnrolment(Users userid, Course courseid) {
+	public boolean checkCourse(String code) {
 		// TODO Auto-generated method stub
 		return false;
 	}

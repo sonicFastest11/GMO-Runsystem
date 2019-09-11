@@ -95,7 +95,7 @@ public class UserService implements GenericService<Users> {
 
 	@Override
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id) {
+			 String status, int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -113,14 +113,13 @@ public class UserService implements GenericService<Users> {
 	}
 
 	@Override
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,
-			String startDate, String endDate, int id) {
+	public boolean checkEnrolment(Users userid, Course courseid) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean checkEnrolment(Users userid, Course courseid) {
+	public boolean checkCourse(String code) {
 		// TODO Auto-generated method stub
 		return false;
 	}

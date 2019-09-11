@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,14 +44,16 @@ public class ProfileController {
 
 	// update Profile
 	@RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
-	public String saveProfile(@ModelAttribute("profile") @Validated Profile profile, BindingResult br) {
+	public String saveProfile(@ModelAttribute("profile") @Validated Profile profile, BindingResult br, Model model,
+			HttpSession session) {
+
 		if (br.hasErrors()) {
 			return "admin/profile/ProfileForm";
 		} else {
 
 			profileService.updateProfile(profile.getName(), profile.getAddress(), profile.getDob(), profile.getGender(),
-					profile.getPhone(), profile.getEmail(), profile.getClassCode(), profile.getStatus(),
-					profile.getId());
+					profile.getPhone(), profile.getEmail(), profile.getStatus(), profile.getId());
+			model.addAttribute("message", "update profile successfully");
 
 			return "redirect:/home";
 		}

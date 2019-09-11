@@ -26,14 +26,12 @@ CREATE TABLE `enrolment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(20) NOT NULL,
   `courseid` int(20) NOT NULL,
-  `endDate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `startDate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_COURSE` (`courseid`),
   KEY `FK_USER` (`userid`),
   CONSTRAINT `FK_COURSE` FOREIGN KEY (`courseid`) REFERENCES `course` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_USER` FOREIGN KEY (`userid`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +40,7 @@ CREATE TABLE `enrolment` (
 
 LOCK TABLES `enrolment` WRITE;
 /*!40000 ALTER TABLE `enrolment` DISABLE KEYS */;
-INSERT INTO `enrolment` VALUES (25,64,5,NULL,NULL),(26,64,14,NULL,NULL),(28,62,5,NULL,NULL),(29,62,14,NULL,NULL),(35,62,18,NULL,NULL),(36,141,5,NULL,NULL);
+INSERT INTO `enrolment` VALUES (25,64,5),(26,64,14),(28,62,5),(29,62,14),(35,62,18),(38,62,17);
 /*!40000 ALTER TABLE `enrolment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 10:13:34
+-- Dump completed on 2019-09-11 10:10:01

@@ -46,8 +46,6 @@ public class Profile implements Serializable {
 	@Column
 	private String email;
 	@Column
-	private String classCode;
-	@Column
 	private String status;
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id", nullable=false)
@@ -58,7 +56,7 @@ public class Profile implements Serializable {
 	public Profile() {
 	}
 
-	public Profile(String name, String address, String dob, String gender, String phone, String email, String classCode,
+	public Profile(String name, String address, String dob, String gender, String phone, String email, 
 			String status, Users user) {
 		super();
 		this.name = name;
@@ -67,7 +65,6 @@ public class Profile implements Serializable {
 		this.gender = gender;
 		this.phone = phone;
 		this.email = email;
-		this.classCode = classCode;
 		this.status = status;
 		this.user = user;
 	}
@@ -135,13 +132,6 @@ public class Profile implements Serializable {
 		this.email = email;
 	}
 
-	public String getClassCode() {
-		return classCode;
-	}
-
-	public void setClassCode(String classCode) {
-		this.classCode = classCode;
-	}
 
 	public String getStatus() {
 		return status;

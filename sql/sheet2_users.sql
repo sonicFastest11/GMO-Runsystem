@@ -26,12 +26,12 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `confirmPassword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `roleid` int(11) DEFAULT NULL,
+  `confirmPassword` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `roleid` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `users_ibfk_1` (`roleid`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`roleid`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','123','123',1),(2,'manager','123','123',2),(3,'teacher','123','123',3),(43,'teacher2','123','123',3),(45,'sonpt','123','123',3),(62,'sonic1','123','123',4),(64,'student','123','123',4),(141,'sonic12','123','123',4);
+INSERT INTO `users` VALUES (1,'admin','123','123',1),(2,'manager','123','123',2),(3,'teacher','123','123',3),(43,'teacher2','123','123',3),(45,'sonpt','123','123',3),(62,'sonic1','123','123',4),(64,'student','123','123',4);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 10:13:34
+-- Dump completed on 2019-09-11 10:10:02

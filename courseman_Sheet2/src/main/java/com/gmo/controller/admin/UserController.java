@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,7 +60,11 @@ public class UserController {
 
 	// Register to save user
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute("user") Users user, ModelAndView model) {
+	public ModelAndView saveUser(@ModelAttribute("user") @Validated Users user, BindingResult br, ModelAndView model) {
+		if (br.hasErrors()) {
+			model.setViewName("admin/user/addUser");
+			return model;
+		} else {
 		if (!userService.checkUser(user.getUsername())) {
 			if (user.getPassword().equals(user.getConfirmPassword())) {
 				user.setRoleid(roleService.get(user.getIdRole()));
@@ -67,7 +73,7 @@ public class UserController {
 				profileService.create(profile);
 				return new ModelAndView("redirect:/userList");
 			} else {
-				model.setViewName("admin/user/register");
+				model.setViewName("admin/user/addUser");
 				model.addObject("message", "Password not match !!!");
 				return model;
 			}
@@ -76,7 +82,7 @@ public class UserController {
 			model.addObject("message", "Username has been existed !!!");
 			return model;
 		}
-
+		}
 	}
 
 	// take list of Users

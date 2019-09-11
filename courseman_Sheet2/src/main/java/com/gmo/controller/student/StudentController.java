@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +51,11 @@ public class StudentController {
 
 	// Register to save user
 	@RequestMapping(value = "/saveStudent", method = RequestMethod.POST)
-	public ModelAndView saveStudent(@ModelAttribute("user") Users user, ModelAndView model) {
+	public ModelAndView saveStudent(@ModelAttribute("user") @Validated Users user, BindingResult br, ModelAndView model) {
+		if (br.hasErrors()) {
+			model.setViewName("student/register");
+			return model;
+		} else {
 		if (!userService.checkUser(user.getUsername())) {
 			if (user.getPassword().equals(user.getConfirmPassword())) {
 				user.setRoleid(roleService.getDefaultRole(user.getIdRole()));
@@ -66,7 +72,7 @@ public class StudentController {
 			model.setViewName("student/register");
 			model.addObject("message", "Username has been existed !!!");
 			return model;
-		}
+		}}
 	}
 
 	// take the list Teacher

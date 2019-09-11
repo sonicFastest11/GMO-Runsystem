@@ -89,18 +89,15 @@
 								<label>Email</label>
 								<form:input path="email" class="form-control" />
 							</div>
-							<div class="form-group">
-								<label>ClassCode</label>
-								<form:input path="classCode" class="form-control" />
-							</div>
+							
 							<div class="form-group">
 								<label>Status</label>
 								<form:select path="status" items="${status}"
 									class="form-control" />
 							</div>
 							<div class="form-group">
-								<label>Role</label>
-								<form:input path="user.roleid.role_name" readonly="true"
+								<label>UserName</label>
+								<form:input path="user.username" readonly="true"
 									class="form-control" />
 							</div>
 

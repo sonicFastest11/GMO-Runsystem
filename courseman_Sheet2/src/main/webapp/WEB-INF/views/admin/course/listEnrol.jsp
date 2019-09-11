@@ -54,8 +54,8 @@
 								<thead>
 									<tr>
 										<th>ID</th>
-										<th>User_Role</th>
-										<th>User</th>
+										
+										<th>Student</th>
 										<th>Course_Name</th>
 										<th>Course_Teacher</th>
 										<th>Start Date</th>
@@ -67,7 +67,7 @@
 									<c:forEach var="enrol" items="${list}">
                 						<tr>
 											<td>${enrol.id}</td>
-											<td>${enrol.user.roleid.role_name}</td>
+											
 											<td>${enrol.user.profile.name}</td>
 											<td>${enrol.course.code}</td>
 											<td>${enrol.course.userid.profile.name}</td>

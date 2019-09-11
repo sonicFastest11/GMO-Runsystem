@@ -1,4 +1,4 @@
-package com.gmo.dao.impl;
+	package com.gmo.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -96,7 +96,7 @@ public class EnrolmentDAO implements GenericDAO<Enrolment> {
 
 	@Override
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id) {
+			 String status, int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -107,12 +107,6 @@ public class EnrolmentDAO implements GenericDAO<Enrolment> {
 		return null;
 	}
 
-	@Override
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,
-			String startDate, String endDate, int id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public Enrolment update(Enrolment t) {
@@ -130,6 +124,12 @@ public class EnrolmentDAO implements GenericDAO<Enrolment> {
 	public Enrolment getDefaultRole(Object id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean checkCourse(String code) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

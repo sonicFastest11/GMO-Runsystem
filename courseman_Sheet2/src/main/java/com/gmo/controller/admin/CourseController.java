@@ -45,13 +45,22 @@ public class CourseController {
 
 	// save new Course
 	@RequestMapping(value = "/doaddCourse", method = RequestMethod.POST)
-	public String saveCourse(@ModelAttribute("course") @Validated Course course, BindingResult br, ModelAndView model) {
+	public ModelAndView saveCourse(@ModelAttribute("course") @Validated Course course, BindingResult br,
+			ModelAndView model) {
 		if (br.hasErrors()) {
-			return "admin/course/courseAddForm";
+			model.setViewName("admin/course/courseAddForm");
+			return model;
 		} else {
-			course.setUserid(userService.get(course.getIdUser()));
-			courseService.create(course);
-			return "redirect:/courseList";
+			if (!courseService.checkCourse(course.getCode())) {
+				course.setUserid(userService.get(course.getIdUser()));
+				courseService.create(course);
+				model.setViewName("redirect:/courseList");
+				return model;
+			} else {
+				model.addObject("message", "Course has been existed !!!");
+				model.setViewName("admin/course/courseAddForm");
+				return model;
+			}
 		}
 	}
 
@@ -73,16 +82,31 @@ public class CourseController {
 
 	// update Course
 	@RequestMapping(value = "/updateCourse", method = RequestMethod.POST)
-	public String updateCourse(@ModelAttribute @Validated Course course, BindingResult br) {
+	public ModelAndView updateCourse(@ModelAttribute @Validated Course course, BindingResult br, ModelAndView model) {
+		Course courseid = courseService.get(course.getId());
 		if (br.hasErrors()) {
-			System.out.println("update fail");
-			return "admin/course/courseEditForm";
+			model.setViewName("admin/course/courseEditForm");
+			return model;
 		} else {
-			Users userid = userService.get(course.getIdUser());
-			courseService.updateCourse(course.getCode(), course.getName(), course.getTime(), course.getFee(),
-					course.getType(), userid,course.getStartDate(),course.getEndDate(), course.getId());
-			return "redirect:/courseList";
+			if (courseid.getCode().equalsIgnoreCase(course.getCode())) {
+				Users userid = userService.get(course.getIdUser());
+				course.setUserid(userid);
+				courseService.update(course);
+				model.setViewName("redirect:/courseList");
+				return model;
+			} else if (!courseService.checkCourse(course.getCode())) {
+				Users userid = userService.get(course.getIdUser());
+				course.setUserid(userid);
+				courseService.update(course);
+				model.setViewName("redirect:/courseList");
+				return model;
+			} else {
+				model.addObject("message", "Course has been existed !!!");
+				model.setViewName("admin/course/courseEditForm");
+				return model;
+			}
 		}
+
 	}
 
 	// take the id of Course in URL

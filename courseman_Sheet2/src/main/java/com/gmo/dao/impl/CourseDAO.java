@@ -23,7 +23,7 @@ public class CourseDAO implements GenericDAO<Course> {
 
 	@Override
 	public void create(Course t) {
-		sessionFactory.getCurrentSession().save(t); 
+		sessionFactory.getCurrentSession().save(t);
 
 	}
 
@@ -55,34 +55,23 @@ public class CourseDAO implements GenericDAO<Course> {
 
 	}
 
+
+
 	@Override
-	public boolean updateCourse(String code, String name, String time, String fee, String type, Users userid,
-			String startDate, String endDate, int id) {
-		String hql = "update Course c set c.code =:code , c.name=:name,c.time=:time,c.fee=:fee,c.type=:type,c.userid=:userid,c.startDate=:startDate,c.endDate=:endDate  "
-				+ "where c.id =:id";
-		Session session = sessionFactory.openSession();
-		Transaction t = session.beginTransaction();
-		try {
-			Query query = session.createQuery(hql);
-			query.setParameter("code", code).setParameter("name", name).setParameter("time", time)
-					.setParameter("fee", fee).setParameter("type", type).setParameter("userid", userid)
-					.setParameter("startDate", startDate).setParameter("endDate", endDate).setParameter("id", id);
-			query.executeUpdate();
-			t.commit();
-			session.close();
+	public boolean checkCourse(String code) {
+		String hql = "from Course c where c.code=? ";
+		@SuppressWarnings("unchecked")
+		List<Course> courses = sessionFactory.getCurrentSession().createQuery(hql).setParameter(0, code).list();
+		if (courses.size() == 1) {
 			return true;
-
-		} catch (Exception e) {
-			t.rollback();
-			session.close();
+		} else {
 			return false;
-
 		}
 	}
 
 	@Override
 	public boolean updateProfile(String name, String address, String dob, String gender, String phone, String email,
-			String classCode, String status, int id) {
+			String status, int id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -146,4 +135,5 @@ public class CourseDAO implements GenericDAO<Course> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

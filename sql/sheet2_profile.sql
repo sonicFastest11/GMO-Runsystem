@@ -30,13 +30,12 @@ CREATE TABLE `profile` (
   `gender` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `classCode` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_q1ahp4x6s0ae4hwhcd1bnw36o` (`user_id`),
   CONSTRAINT `FK_q1ahp4x6s0ae4hwhcd1bnw36o` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +44,7 @@ CREATE TABLE `profile` (
 
 LOCK TABLES `profile` WRITE;
 /*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (2,'Hồng Sơn','Hà Nội','06/06/1998','Nam','0336782666','sondh@gmail.com','4C_16','Trong Run',1),(7,'AN LD','Ha Noi','10/10/1990','Nam','123456789','anld@gmail.com','','Trong Run',3),(8,'Thang ND','','','','','','','Ngoài Run',43),(10,'Phan Son','','','','','','','Trong Run',45),(15,'Sonic11','Ha Noi','dd/mm/yyyy','Nam','123456','@gmail.com','4C16','Trong Run',62),(16,'dohongson','','29/02/1996','Nam','','','','Trong Run',64),(52,'sonic12',NULL,'10/10/1998','Nam',NULL,NULL,NULL,NULL,141);
+INSERT INTO `profile` VALUES (2,'Hồng Sơn','Hà Nội','06/06/1998','Nam','0336782666','sondh@gmail.com','Trong Run',1),(7,'AN LD','Ha Noi','10/10/1990','Nam','123456789','anld@gmail.com','Trong Run',3),(8,'Thang ND','','','','123456','','Ngoài Run',43),(10,'Phan Son','','12/12/1990','Nam','123456','','Trong Run',45),(15,'Sonic11','Ha Noi','dd/mm/yyyy','Nam','123456','@gmail.com','Trong Run',62),(16,'dohongson','','29/02/1996','Nam','','','Trong Run',64),(75,'manager',NULL,'29/02/1996','Nu','123456',NULL,NULL,2);
 /*!40000 ALTER TABLE `profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 10:13:33
+-- Dump completed on 2019-09-11 10:10:01
